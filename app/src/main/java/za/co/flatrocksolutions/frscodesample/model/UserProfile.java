@@ -10,8 +10,7 @@ public class UserProfile {
     private String mId;
     private String mName;
     private String mProfilePictureUrl;
-    private String mAbout;
-    private ArrayList<String> mInterests;
+    private String mTitle;
 
     public String getId() {
         return mId;
@@ -22,22 +21,7 @@ public class UserProfile {
     public String getProfilePictureUrl() {
         return mProfilePictureUrl;
     }
-
-    public String getAbout() {
-        return mAbout;
+    public String getTitle() {
+        return mTitle;
     }
-
-    public void setAbout(String mAbout) {
-        this.mAbout = mAbout;
-    }
-
-    public ArrayList<String> getInterests() {
-        return mInterests;
-    }
-
-    public void setInterests(ArrayList<String> mInterests) {
-        this.mInterests = mInterests;
-    }
-
-
 }

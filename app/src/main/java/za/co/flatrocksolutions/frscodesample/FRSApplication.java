@@ -23,8 +23,8 @@ public class FRSApplication extends Application {
      * @throws IllegalArgumentException
      */
     public static FRSApplication from(Context context) throws IllegalArgumentException{
-        if (context instanceof FRSApplication) {
-            return (FRSApplication) context;
+        if (context.getApplicationContext() instanceof FRSApplication) {
+            return (FRSApplication) context.getApplicationContext();
         } else {
             throw new IllegalArgumentException("Not an instance of FRSApplication");
         }
