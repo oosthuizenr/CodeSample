@@ -1,5 +1,7 @@
 package za.co.flatrocksolutions.frscodesample.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -7,9 +9,16 @@ import java.util.ArrayList;
  */
 
 public class UserProfile {
+    @SerializedName("Id")
     private String mId;
+
+    @SerializedName("Name")
     private String mName;
+
+    @SerializedName("ProfilePictureUrl")
     private String mProfilePictureUrl;
+
+    @SerializedName("Title")
     private String mTitle;
 
     public String getId() {

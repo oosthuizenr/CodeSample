@@ -29,6 +29,10 @@ public class ProfileListPresenter implements ProfileListContract.Presenter {
 
     @Override
     public void onSubscribe() {
+        loadUsers();
+    }
+
+    private void loadUsers() {
         mView.showProgressBar();
 
         mCompositeDisposable.add(mUserProfileInteractor.getListOfUsers()
@@ -44,14 +48,22 @@ public class ProfileListPresenter implements ProfileListContract.Presenter {
                     }
                 }, error -> {
                     mView.hideProgressBar();
+                    mView.noUsersToShow();
 
                     mView.onError();
                 }));
     }
 
+
     @Override
     public void profileClicked(UserProfile profile) {
         mView.launchUserProfileDetail(profile);
+    }
+
+
+    @Override
+    public void retryClicked() {
+        loadUsers();
     }
 
     @Override

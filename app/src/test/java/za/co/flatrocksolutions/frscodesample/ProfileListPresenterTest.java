@@ -132,6 +132,18 @@ public class ProfileListPresenterTest {
     }
 
     @Test
+    public void verifyNoUsersShownAfterOnSubscribeWithErrorOnInteractor() {
+        mPresenter.setView(mView);
+
+        when(mInteractor.getListOfUsers()).thenReturn(Observable.error(new Exception()));
+
+        mPresenter.setView(mView);
+        mPresenter.onSubscribe();
+
+        verify(mView).noUsersToShow();
+    }
+
+    @Test
     public void verifyProgressBarHiddenAfterSuccessfulCallWithNoUsers() {
         mPresenter.setView(mView);
 
@@ -181,5 +193,31 @@ public class ProfileListPresenterTest {
         mPresenter.profileClicked(profile);
 
         verify(mView).launchUserProfileDetail(profile);
+    }
+
+    @Test
+    public void verifyShowProgressBarAfterRetry() {
+        mPresenter.setView(mView);
+
+        ArrayList<UserProfile> list = new ArrayList<>();
+        when(mInteractor.getListOfUsers()).thenReturn(Observable.just(list));
+
+        mPresenter.setView(mView);
+        mPresenter.retryClicked();
+
+        verify(mView).showProgressBar();
+    }
+
+    @Test
+    public void verifyInteractorCalledAfterRetry() {
+        mPresenter.setView(mView);
+
+        ArrayList<UserProfile> list = new ArrayList<>();
+        when(mInteractor.getListOfUsers()).thenReturn(Observable.just(list));
+
+        mPresenter.setView(mView);
+        mPresenter.retryClicked();
+
+        verify(mView).showProgressBar();
     }
 }

@@ -14,12 +14,12 @@ import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 
 public interface IProfileApi {
 
-    @GET("/users")
+    @GET("/user")
     Observable<ArrayList<UserProfile>> getUserProfiles();
 
-    @GET("/users/{user_id}/about")
+    @GET("/user/{user_id}/about")
     Observable<String> getUserAbout(@Path("user_id") String userId);
 
-    @GET("/users/{user_id}/interests")
+    @GET("/user/{user_id}/interests")
     Observable<ArrayList<String>> getUserInterests(@Path("user_id") String userId);
 }

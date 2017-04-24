@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="light_gray">#D3D3D3</color>
+    <color name="darker_gray">#aaa</color>
+    <color name="white">#FFF</color>
+    <color name="civ_background">#EEEEEE</color>
 </resources>

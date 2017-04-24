@@ -11,6 +11,7 @@ import za.co.flatrocksolutions.frscodesample.di.module.RetrofitModule;
 import za.co.flatrocksolutions.frscodesample.di.module.RxModule;
 import za.co.flatrocksolutions.frscodesample.di.scope.FRSApplicationScope;
 import za.co.flatrocksolutions.frscodesample.interactor.UserProfileInteractor;
+import za.co.flatrocksolutions.frscodesample.profile_list.adapter.UserProfileListAdapter;
 import za.co.flatrocksolutions.frscodesample.rx.SchedulerProvider;
 
 /**
@@ -29,4 +30,6 @@ import za.co.flatrocksolutions.frscodesample.rx.SchedulerProvider;
 public interface ApplicationComponent {
     UserProfileInteractor exposeUserProfileInteractor();
     SchedulerProvider exposeSchedulerProvider();
+
+    void inject(UserProfileListAdapter.UserProfileListViewHolder viewHolder);
 }

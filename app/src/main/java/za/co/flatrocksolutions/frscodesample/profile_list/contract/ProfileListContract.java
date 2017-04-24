@@ -21,5 +21,6 @@ public interface ProfileListContract {
 
     interface Presenter extends BasePresenter<View> {
         void profileClicked(UserProfile profile);
+        void retryClicked();
     }
 }

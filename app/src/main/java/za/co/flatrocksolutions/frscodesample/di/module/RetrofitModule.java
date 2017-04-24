@@ -36,7 +36,7 @@ public class RetrofitModule {
                 .addConverterFactory(gsonConverterFactory)
                 .addCallAdapterFactory(rxJava2CallAdapterFactory)
                 .client(okHttpClient)
-                .baseUrl("https://profile.mobila.co.za")
+                .baseUrl("https://testprofiler.mobila.co.za")
                 .build();
     }
 
