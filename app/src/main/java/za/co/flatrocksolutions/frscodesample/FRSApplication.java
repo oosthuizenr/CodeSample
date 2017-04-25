@@ -13,8 +13,10 @@ import za.co.flatrocksolutions.frscodesample.di.module.ApplicationModule;
  */
 
 public class FRSApplication extends Application {
+/*
 
     private ApplicationComponent mApplicationComponent;
+*/
 
     /**
      * Helper method to get access to {@link FRSApplication} from a {@link Context}.
@@ -38,12 +40,13 @@ public class FRSApplication extends Application {
         if (BuildConfig.DEBUG)
             Timber.plant(new Timber.DebugTree());
 
-        mApplicationComponent = DaggerApplicationComponent.builder()
+
+       /* mApplicationComponent = DaggerApplicationComponent.builder()
                         .applicationModule(new ApplicationModule(this))
-                        .build();
+                        .build();*/
     }
 
-    public ApplicationComponent getApplicationComponent() {
+    /*public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
-    }
+    }*/
 }

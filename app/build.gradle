@@ -68,4 +68,5 @@ dependencies {
     })
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     testCompile 'org.mockito:mockito-core:2.7.22'
+    androidTestCompile 'org.mockito:mockito-core:2.7.22'
 }

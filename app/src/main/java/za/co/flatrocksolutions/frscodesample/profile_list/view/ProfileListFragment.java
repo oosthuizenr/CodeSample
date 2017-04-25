@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import za.co.flatrocksolutions.frscodesample.FRSApplication;
 import za.co.flatrocksolutions.frscodesample.R;
+import za.co.flatrocksolutions.frscodesample.di.DIHelper;
 import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 import za.co.flatrocksolutions.frscodesample.profile_list.adapter.UserProfileListAdapter;
 import za.co.flatrocksolutions.frscodesample.profile_list.contract.ProfileListContract;
@@ -66,11 +67,7 @@ public class ProfileListFragment extends Fragment implements ProfileListContract
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile_list, container, false);
 
-        DaggerProfileListComponent
-                .builder()
-                .applicationComponent(FRSApplication.from(getContext()).getApplicationComponent())
-                .build()
-                .inject(this);
+        DIHelper.getProfileListComponent(getContext(), DIHelper.getAppComponent(getContext())).inject(this);
 
         ButterKnife.bind(this, v);
 

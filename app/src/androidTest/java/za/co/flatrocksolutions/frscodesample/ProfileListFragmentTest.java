@@ -11,12 +11,9 @@ import za.co.flatrocksolutions.frscodesample.profile_list.view.ProfileListActivi
 
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.*;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by renier on 4/24/2017.

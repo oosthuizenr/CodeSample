@@ -18,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import za.co.flatrocksolutions.frscodesample.FRSApplication;
 import za.co.flatrocksolutions.frscodesample.R;
+import za.co.flatrocksolutions.frscodesample.di.DIHelper;
 import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 
 /**
@@ -69,7 +70,7 @@ public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileList
 
             ButterKnife.bind(this, itemView);
 
-            FRSApplication.from(itemView.getContext()).getApplicationComponent().inject(this);
+            DIHelper.getAppComponent(itemView.getContext()).inject(this);
         }
 
         public void bind(UserProfile profile) {
