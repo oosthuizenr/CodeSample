@@ -21,6 +21,17 @@ public class UserProfile {
     @SerializedName("Title")
     private String mTitle;
 
+    public UserProfile() {
+
+    }
+
+    public UserProfile(String mId, String mName, String mProfilePictureUrl, String mTitle) {
+        this.mId = mId;
+        this.mName = mName;
+        this.mProfilePictureUrl = mProfilePictureUrl;
+        this.mTitle = mTitle;
+    }
+
     public String getId() {
         return mId;
     }
