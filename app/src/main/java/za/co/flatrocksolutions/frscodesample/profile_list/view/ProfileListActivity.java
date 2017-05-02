@@ -8,10 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import za.co.flatrocksolutions.frscodesample.R;
+import za.co.flatrocksolutions.frscodesample.model.UserProfile;
+import za.co.flatrocksolutions.frscodesample.profile.view.ProfileFragment;
 
 public class ProfileListActivity extends AppCompatActivity {
     public static final String FLAG_ADD_FRAGMENT = "addFragment";
-    public static final String FRAGMENT_TAG = ProfileListActivity.class.getSimpleName();
+    public static final String LIST_FRAGMENT_TAG = ProfileListFragment.class.getSimpleName();
+    public static final String DETAIL_FRAGMENT_TAG = ProfileFragment.class.getSimpleName();
     private FragmentManager mFragmentManager;
 
     public static Intent getLaunchIntent(Context context, boolean addFragment) {
@@ -28,15 +31,29 @@ public class ProfileListActivity extends AppCompatActivity {
         mFragmentManager = this.getSupportFragmentManager();
 
         if (getIntent().getBooleanExtra(FLAG_ADD_FRAGMENT, true)) {
-            ProfileListFragment fragment = (ProfileListFragment) mFragmentManager.findFragmentByTag(FRAGMENT_TAG);
+            ProfileListFragment fragment = (ProfileListFragment) mFragmentManager.findFragmentByTag(LIST_FRAGMENT_TAG);
 
             if (fragment == null) {
                 fragment = ProfileListFragment.newInstance();
             }
 
             FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.rootContainer, fragment, FRAGMENT_TAG)
+            transaction.replace(R.id.rootContainer, fragment, LIST_FRAGMENT_TAG)
                     .commit();
         }
+    }
+
+    public void loadUserDetailFragment(UserProfile profile) {
+        ProfileFragment fragment = (ProfileFragment) mFragmentManager.findFragmentByTag(DETAIL_FRAGMENT_TAG);
+
+        if (fragment == null) {
+            fragment = ProfileFragment.newInstance(profile);
+        }
+
+        mFragmentManager
+                .beginTransaction()
+                .replace(R.id.rootContainer, fragment, LIST_FRAGMENT_TAG)
+                .addToBackStack(LIST_FRAGMENT_TAG)
+                .commit();
     }
 }

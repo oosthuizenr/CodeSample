@@ -135,7 +135,7 @@ public class ProfileListFragment extends Fragment implements ProfileListContract
 
     @Override
     public void launchUserProfileDetail(UserProfile profile) {
-
+        ((ProfileListActivity)getActivity()).loadUserDetailFragment(profile);
     }
 
     @Override

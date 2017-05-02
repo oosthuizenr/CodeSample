@@ -325,14 +325,14 @@ public class ProfileListFragmentTest {
     private void setupFragment() {
         FragmentManager fragmentManager = activityTestRule.getActivity().getSupportFragmentManager();
 
-        mFragment = (ProfileListFragment) fragmentManager.findFragmentByTag(ProfileListActivity.FRAGMENT_TAG);
+        mFragment = (ProfileListFragment) fragmentManager.findFragmentByTag(ProfileListActivity.LIST_FRAGMENT_TAG);
 
         if (mFragment == null) {
             mFragment = ProfileListFragment.newInstance();
         }
 
         fragmentManager.beginTransaction()
-                .replace(R.id.rootContainer, mFragment, ProfileListActivity.FRAGMENT_TAG)
+                .replace(R.id.rootContainer, mFragment, ProfileListActivity.LIST_FRAGMENT_TAG)
                 .commit();
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
