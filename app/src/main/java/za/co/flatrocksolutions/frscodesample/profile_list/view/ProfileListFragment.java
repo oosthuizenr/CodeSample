@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import za.co.flatrocksolutions.frscodesample.FRSApplication;
 import za.co.flatrocksolutions.frscodesample.R;
+import za.co.flatrocksolutions.frscodesample.RecyclerItemClickListener;
 import za.co.flatrocksolutions.frscodesample.di.DIHelper;
 import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 import za.co.flatrocksolutions.frscodesample.profile_list.adapter.UserProfileListAdapter;
@@ -74,6 +75,17 @@ public class ProfileListFragment extends Fragment implements ProfileListContract
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(mAdapter);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        mPresenter.profileClicked(mAdapter.getData().get(position));
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                    }
+                })
+        );
 
         return v;
     }

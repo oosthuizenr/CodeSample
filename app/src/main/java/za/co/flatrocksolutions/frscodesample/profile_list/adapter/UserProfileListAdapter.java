@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,10 +28,19 @@ import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 
 public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileListAdapter.UserProfileListViewHolder>{
     private ArrayList<UserProfile> mData;
+    private AdapterView.OnItemClickListener mItemClickListener;
 
     public void setData(ArrayList<UserProfile> data) {
         this.mData = data;
         notifyDataSetChanged();
+    }
+
+    public ArrayList<UserProfile> getData() {
+        return this.mData;
+    }
+
+    public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
+        mItemClickListener = listener;
     }
 
     @Override
