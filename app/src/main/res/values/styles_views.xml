@@ -34,4 +34,8 @@
     <style name="LabelBase.Label.BigText">
         <item name="android:textSize">32dp</item>
     </style>
+
+    <style name="LabelBase.Label.CardHeader">
+        <item name="android:textSize">24dp</item>
+    </style>
 </resources>

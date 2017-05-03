@@ -17,6 +17,7 @@ public interface ProfileListContract {
         void noUsersToShow();
         void setUsersToShow(ArrayList<UserProfile> model);
         void launchUserProfileDetail(UserProfile profile);
+        void hideNoUsers();
     }
 
     interface Presenter extends BasePresenter<View> {

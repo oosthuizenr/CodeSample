@@ -21,6 +21,9 @@ public class UserProfile implements Parcelable {
     @SerializedName("ProfilePictureUrl")
     private String mProfilePictureUrl;
 
+    @SerializedName("BackgroundPictureUrl")
+    private String mBackgroundPictureUrl;
+
     @SerializedName("Title")
     private String mTitle;
 
@@ -28,10 +31,11 @@ public class UserProfile implements Parcelable {
 
     }
 
-    public UserProfile(String mId, String mName, String mProfilePictureUrl, String mTitle) {
+    public UserProfile(String mId, String mName, String mProfilePictureUrl, String mBackgroundPictureUrl, String mTitle) {
         this.mId = mId;
         this.mName = mName;
         this.mProfilePictureUrl = mProfilePictureUrl;
+        this.mBackgroundPictureUrl = mBackgroundPictureUrl;
         this.mTitle = mTitle;
     }
 
@@ -39,6 +43,7 @@ public class UserProfile implements Parcelable {
         mId = in.readString();
         mName = in.readString();
         mProfilePictureUrl = in.readString();
+        mBackgroundPictureUrl = in.readString();
         mTitle = in.readString();
     }
 
@@ -50,6 +55,9 @@ public class UserProfile implements Parcelable {
     }
     public String getProfilePictureUrl() {
         return mProfilePictureUrl;
+    }
+    public String getBackgroundPictureUrl() {
+        return mBackgroundPictureUrl;
     }
     public String getTitle() {
         return mTitle;
@@ -65,6 +73,7 @@ public class UserProfile implements Parcelable {
         parcel.writeString(mId);
         parcel.writeString(mName);
         parcel.writeString(mProfilePictureUrl);
+        parcel.writeString(mBackgroundPictureUrl);
         parcel.writeString(mTitle);
     }
 

@@ -26,7 +26,7 @@ import za.co.flatrocksolutions.frscodesample.model.UserProfile;
  * Created by renier on 4/24/2017.
  */
 
-public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileListAdapter.UserProfileListViewHolder>{
+public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileListAdapter.UserProfileListViewHolder> {
     private ArrayList<UserProfile> mData;
     private AdapterView.OnItemClickListener mItemClickListener;
 
@@ -80,7 +80,8 @@ public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileList
 
             ButterKnife.bind(this, itemView);
 
-            DIHelper.getAppComponent(itemView.getContext()).inject(this);
+            DIHelper.getProfileListComponent(itemView.getContext(), DIHelper.getAppComponent(itemView.getContext()))
+                    .inject(this);
         }
 
         public void bind(UserProfile profile) {

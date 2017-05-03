@@ -195,6 +195,20 @@ public class ProfileListPresenterTest {
         verify(mView).launchUserProfileDetail(profile);
     }
 
+
+    @Test
+    public void verifyNoUsersHiddenAfterRetry() {
+        mPresenter.setView(mView);
+
+        ArrayList<UserProfile> list = new ArrayList<>();
+        when(mInteractor.getListOfUsers()).thenReturn(Observable.just(list));
+
+        mPresenter.setView(mView);
+        mPresenter.retryClicked();
+
+        verify(mView).hideNoUsers();
+    }
+
     @Test
     public void verifyShowProgressBarAfterRetry() {
         mPresenter.setView(mView);

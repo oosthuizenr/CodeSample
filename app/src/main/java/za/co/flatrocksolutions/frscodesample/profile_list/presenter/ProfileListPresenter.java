@@ -34,6 +34,7 @@ public class ProfileListPresenter implements ProfileListContract.Presenter {
 
     private void loadUsers() {
         mView.showProgressBar();
+        mView.hideNoUsers();
 
         mCompositeDisposable.add(mUserProfileInteractor.getListOfUsers()
                 .subscribeOn(mSchedulerProvider.io())

@@ -3,6 +3,7 @@ package za.co.flatrocksolutions.frscodesample.profile_list.di;
 
 import dagger.Component;
 import za.co.flatrocksolutions.frscodesample.di.component.ApplicationComponent;
+import za.co.flatrocksolutions.frscodesample.profile_list.adapter.UserProfileListAdapter;
 import za.co.flatrocksolutions.frscodesample.profile_list.view.ProfileListFragment;
 
 /**
@@ -15,4 +16,5 @@ import za.co.flatrocksolutions.frscodesample.profile_list.view.ProfileListFragme
 )
 public interface ProfileListComponent {
     void inject(ProfileListFragment fragment);
+    void inject(UserProfileListAdapter.UserProfileListViewHolder viewHolder);
 }

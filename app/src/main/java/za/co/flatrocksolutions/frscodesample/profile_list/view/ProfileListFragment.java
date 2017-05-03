@@ -139,6 +139,11 @@ public class ProfileListFragment extends Fragment implements ProfileListContract
     }
 
     @Override
+    public void hideNoUsers() {
+        tvNoUsers.setVisibility(View.GONE);
+    }
+
+    @Override
     public void onError() {
         Snackbar.make(recyclerView, mGenericError, Snackbar.LENGTH_LONG)
                 .setAction(R.string.snackbar_retry, (view) -> mPresenter.retryClicked())

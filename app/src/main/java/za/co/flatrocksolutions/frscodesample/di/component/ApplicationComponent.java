@@ -1,5 +1,7 @@
 package za.co.flatrocksolutions.frscodesample.di.component;
 
+import com.squareup.picasso.Picasso;
+
 import dagger.Component;
 import za.co.flatrocksolutions.frscodesample.di.module.ApiModule;
 import za.co.flatrocksolutions.frscodesample.di.module.ApplicationModule;
@@ -30,6 +32,6 @@ import za.co.flatrocksolutions.frscodesample.rx.SchedulerProvider;
 public interface ApplicationComponent {
     UserProfileInteractor exposeUserProfileInteractor();
     SchedulerProvider exposeSchedulerProvider();
+    Picasso exposePicasso();
 
-    void inject(UserProfileListAdapter.UserProfileListViewHolder viewHolder);
 }

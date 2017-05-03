@@ -138,9 +138,11 @@ public class ProfileListFragmentTest {
         model.add(new UserProfile(UUID.randomUUID().toString(),
                 "John",
                 fileUri,
+                fileUri,
                 "Mr"));
         model.add(new UserProfile(UUID.randomUUID().toString(),
                 "Jane",
+                fileUri,
                 fileUri,
                 "Ms"));
 
@@ -171,9 +173,11 @@ public class ProfileListFragmentTest {
         model.add(new UserProfile(UUID.randomUUID().toString(),
                 "John",
                 fileUri,
+                fileUri,
                 "Mr"));
         model.add(new UserProfile(UUID.randomUUID().toString(),
                 "Jane",
+                fileUri,
                 fileUri,
                 "Ms"));
 
@@ -253,9 +257,11 @@ public class ProfileListFragmentTest {
         model.add(new UserProfile(UUID.randomUUID().toString(),
                 "John",
                 fileUri,
+                fileUri,
                 "Mr"));
         model.add(new UserProfile(UUID.randomUUID().toString(),
                 "Jane",
+                fileUri,
                 fileUri,
                 "Ms"));
 
