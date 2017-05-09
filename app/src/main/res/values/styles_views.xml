@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Container"/>
+
+    <!--<item name=""></item>-->
+
+    <style name="Container" />
 
     <style name="Container.ListHeaderRoot">
         <item name="android:padding">8dp</item>
@@ -12,6 +15,22 @@
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
     </style>
+
+    <style name="Container.Detail" />
+
+    <style name="Container.Detail.NameRoot">
+        <item name="android:layout_gravity">bottom|center_horizontal</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Container.Detail.Name">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
 
     <style name="LabelBase">
         <item name="android:alpha">.85</item>
@@ -37,5 +56,52 @@
 
     <style name="LabelBase.Label.CardHeader">
         <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="LabelBase.Label.ToolbarTitle">
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="LabelBase.Label.Detail" />
+
+    <style name="LabelBase.Label.Detail.Name">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">bottom|center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="LabelBase.Label.Detail.Title">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="LabelBase.Label.Detail.About">
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="LabelBase.Label.Detail.NoInterests">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="ImageView"/>
+
+    <style name="ImageView.Placeholder">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:tint">#11000000</item>
+    </style>
+
+    <style name="CardView">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:minHeight">200dp</item>
     </style>
 </resources>

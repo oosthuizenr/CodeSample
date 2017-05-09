@@ -31,15 +31,23 @@ public class ProfileListActivity extends AppCompatActivity {
         mFragmentManager = this.getSupportFragmentManager();
 
         if (getIntent().getBooleanExtra(FLAG_ADD_FRAGMENT, true)) {
-            ProfileListFragment fragment = (ProfileListFragment) mFragmentManager.findFragmentByTag(LIST_FRAGMENT_TAG);
+            ProfileFragment profileFragment = (ProfileFragment) mFragmentManager.findFragmentByTag(DETAIL_FRAGMENT_TAG);
 
-            if (fragment == null) {
-                fragment = ProfileListFragment.newInstance();
+            if (profileFragment == null) {
+                ProfileListFragment fragment = (ProfileListFragment) mFragmentManager.findFragmentByTag(LIST_FRAGMENT_TAG);
+
+                if (fragment == null) {
+                    fragment = ProfileListFragment.newInstance();
+                }
+
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.replace(R.id.rootContainer, fragment, LIST_FRAGMENT_TAG)
+                        .commit();
+            } else {
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.replace(R.id.rootContainer, profileFragment, DETAIL_FRAGMENT_TAG)
+                        .commit();
             }
-
-            FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.rootContainer, fragment, LIST_FRAGMENT_TAG)
-                    .commit();
         }
     }
 
@@ -52,8 +60,8 @@ public class ProfileListActivity extends AppCompatActivity {
 
         mFragmentManager
                 .beginTransaction()
-                .replace(R.id.rootContainer, fragment, LIST_FRAGMENT_TAG)
-                .addToBackStack(LIST_FRAGMENT_TAG)
+                .replace(R.id.rootContainer, fragment, DETAIL_FRAGMENT_TAG)
+                .addToBackStack(DETAIL_FRAGMENT_TAG)
                 .commit();
     }
 }

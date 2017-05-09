@@ -4,6 +4,7 @@ package za.co.flatrocksolutions.frscodesample.profile.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -15,22 +16,22 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.plumillonforge.android.chipview.Chip;
+import com.plumillonforge.android.chipview.ChipView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
-import za.co.flatrocksolutions.frscodesample.FRSApplication;
 import za.co.flatrocksolutions.frscodesample.R;
 import za.co.flatrocksolutions.frscodesample.di.DIHelper;
 import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 import za.co.flatrocksolutions.frscodesample.profile.contract.ProfileContract;
-import za.co.flatrocksolutions.frscodesample.profile.di.DaggerProfileComponent;
-import za.co.flatrocksolutions.frscodesample.profile.presenter.ProfilePresenter;
 
 public class ProfileFragment extends Fragment implements ProfileContract.View, AppBarLayout.OnOffsetChangedListener {
     private static final String USER_PROFILE_KEY = "UserProfile";
@@ -47,6 +48,9 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, A
 
     @Inject
     Picasso mPicasso;
+
+    @BindView(R.id.rootContainer)
+    View rootContainer;
 
     @BindView(R.id.llNameContainer)
     LinearLayout mTitleContainer;
@@ -80,6 +84,17 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, A
 
     @BindView(R.id.pbInterests)
     ProgressBar pbInterests;
+
+    @BindView(R.id.chipView)
+    ChipView chipView;
+
+    @BindView(R.id.tvNoInterests)
+    TextView tvNoInterests;
+
+
+
+    @BindString(R.string.generic_error)
+    String mGenericError;
 
     public static ProfileFragment newInstance(UserProfile profile) {
         ProfileFragment fragment = new ProfileFragment();
@@ -183,12 +198,14 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, A
 
     @Override
     public void onError() {
-
+        Snackbar.make(rootContainer, mGenericError, Snackbar.LENGTH_LONG)
+                .show();
     }
 
     @Override
     public void onError(String message) {
-
+        Snackbar.make(rootContainer, message, Snackbar.LENGTH_LONG)
+                .show();
     }
 
     @Override
@@ -223,8 +240,8 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, A
     }
 
     @Override
-    public void setInterests(ArrayList<String> interests) {
-
+    public void setInterests(ArrayList<Chip> interests) {
+        chipView.setChipList(interests);
     }
 
     @Override
@@ -245,5 +262,22 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, A
     @Override
     public void hideAboutProgressbar() {
         pbAbout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void noInterests() {
+        tvNoInterests.setVisibility(View.VISIBLE);
+        chipView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideNoInterests() {
+        tvNoInterests.setVisibility(View.GONE);
+        chipView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void noAbout() {
+        tvAbout.setText(R.string.no_about);
     }
 }

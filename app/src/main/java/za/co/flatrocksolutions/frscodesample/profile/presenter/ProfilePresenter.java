@@ -3,6 +3,7 @@ package za.co.flatrocksolutions.frscodesample.profile.presenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.HttpException;
 import za.co.flatrocksolutions.frscodesample.interactor.UserProfileInteractor;
 import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 import za.co.flatrocksolutions.frscodesample.profile.contract.ProfileContract;
@@ -56,17 +57,38 @@ public class ProfilePresenter implements ProfileContract.Presenter {
                     mView.hideAboutProgressbar();
                     mView.setAbout(result);
                 }, error -> {
-                    mView.onError();
+                    mView.hideAboutProgressbar();
+
+                    if (error instanceof HttpException) {
+                        if (((HttpException) error).code() == 404) {
+                            mView.noAbout();
+                        } else {
+                            mView.onError();
+                        }
+                    } else {
+                        mView.onError();
+                    }
                 }));
 
         mCompositeDisposable.add(mUserProfileInteractor.getUserInterests(profile.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> {
-                    mView.hideAboutProgressbar();
+                    mView.hideInterestsProgressbar();
+                    mView.hideNoInterests();
                     mView.setInterests(result);
                 }, error -> {
-                    mView.onError();
+                    mView.hideInterestsProgressbar();
+
+                    if (error instanceof HttpException) {
+                        if (((HttpException) error).code() == 404) {
+                            mView.noInterests();
+                        } else {
+                            mView.onError();
+                        }
+                    } else {
+                        mView.onError();
+                    }
                 }));
     }
 }

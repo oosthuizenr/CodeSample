@@ -1,6 +1,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="RtlHardcoded">
@@ -18,51 +19,38 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
+                style="@style/ImageView.Placeholder"
                 android:id="@+id/ivPlaceholder"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/quila2"
-                android:tint="#11000000"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.9" />
 
             <FrameLayout
+                style="@style/Container.Detail.NameRoot"
                 android:id="@+id/flNameContainer"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_gravity="bottom|center_horizontal"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.3">
 
                 <LinearLayout
+                    style="@style/Container.Detail.Name"
                     android:id="@+id/llNameContainer"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp">
+                    android:layout_height="wrap_content">
 
                     <TextView
+                        style="@style/LabelBase.Label.Detail.Name"
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="bottom|center"
-                        android:text="@string/quila_name"
-                        android:textColor="@android:color/white"
-                        android:textSize="30sp" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
+                        style="@style/LabelBase.Label.Detail.Title"
                         android:id="@+id/tvTitle"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/quila_tagline"
-                        android:textColor="@android:color/white" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
             </FrameLayout>
@@ -83,28 +71,28 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
+                style="@style/CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:minHeight="200dp"
                 app:cardElevation="8dp"
                 app:contentPadding="16dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/about"
-                        style="@style/LabelBase.Label.CardHeader"/>
 
                     <TextView
-                        android:id="@+id/tvAbout"
+                        style="@style/LabelBase.Label.CardHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="8dp"
-                        android:textSize="18sp" />
+                        android:text="@string/about" />
+
+                    <TextView
+                        style="@style/LabelBase.Label.Detail.About"
+                        android:id="@+id/tvAbout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <ProgressBar
@@ -112,32 +100,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:indeterminate="true"/>
+                    android:indeterminate="true" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                style="@style/CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="200dp"
-                android:layout_margin="8dp"
                 app:cardElevation="8dp"
                 app:contentPadding="16dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/interests"
-                        style="@style/LabelBase.Label.CardHeader"/>
 
                     <TextView
-                        android:id="@+id/tvInterests"
+                        style="@style/LabelBase.Label.CardHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="8dp"
-                        android:textSize="18sp" />
+                        android:text="@string/interests" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp" >
+
+                        <com.plumillonforge.android.chipview.ChipView
+                            android:id="@+id/chipView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            style="@style/LabelBase.Label.Detail.NoInterests"
+                            android:id="@+id/tvNoInterests"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/no_interests"/>
+                    </FrameLayout>
                 </LinearLayout>
 
                 <ProgressBar
@@ -145,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:indeterminate="true"/>
+                    android:indeterminate="true" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
 
@@ -174,11 +173,7 @@
                 android:id="@+id/tvToolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:gravity="center_vertical"
-                android:text="@string/quila_name2"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                style="@style/LabelBase.Label.ToolbarTitle"/>
 
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
@@ -188,7 +183,6 @@
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_width"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/quila"
         app:civ_border_color="@android:color/white"
         app:civ_border_width="2dp"
         app:finalHeight="@dimen/image_final_width"

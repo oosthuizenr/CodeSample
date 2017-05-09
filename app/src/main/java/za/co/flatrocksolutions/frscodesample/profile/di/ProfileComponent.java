@@ -10,7 +10,7 @@ import za.co.flatrocksolutions.frscodesample.profile.view.ProfileFragment;
  */
 @ProfileScope
 @Component(
-        modules = { PresenterModule.class},
+        modules = { PresenterModule.class },
         dependencies = ApplicationComponent.class
 )
 public interface ProfileComponent {
