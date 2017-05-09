@@ -11,6 +11,5 @@ import za.co.flatrocksolutions.frscodesample.ProfileListPresenterTest;
 @Component (modules = { TestInteractorModule.class, TestViewModule.class, TestPresenterModule.class, TestRxModule.class})
 public interface TestComponent {
     void inject(ProfileListPresenterTest test);
-    void inject(ProfilePresenterTest test);
 
 }
