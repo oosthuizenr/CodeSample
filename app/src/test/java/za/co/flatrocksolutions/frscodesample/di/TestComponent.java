@@ -3,7 +3,6 @@ package za.co.flatrocksolutions.frscodesample.di;
 
 import dagger.Component;
 import za.co.flatrocksolutions.frscodesample.ProfileListPresenterTest;
-import za.co.flatrocksolutions.frscodesample.ProfilePresenterTest;
 
 /**
  * Created by renier on 4/20/2017.

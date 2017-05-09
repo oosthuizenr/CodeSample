@@ -1,26 +1,17 @@
 package za.co.flatrocksolutions.frscodesample;
 
 import android.app.Instrumentation;
-import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.Espresso;
-import android.support.test.espresso.IdlingResource;
 import android.support.test.espresso.contrib.RecyclerViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.v4.app.FragmentManager;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.Mockito;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -28,28 +19,29 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import za.co.flatrocksolutions.frscodesample.R;
 import za.co.flatrocksolutions.frscodesample.di.DIHelper;
 import za.co.flatrocksolutions.frscodesample.di.profilelist.DaggerMockProfileListComponent;
-import za.co.flatrocksolutions.frscodesample.di.profilelist.MockPresenterModule;
 import za.co.flatrocksolutions.frscodesample.di.profilelist.MockProfileListComponent;
 import za.co.flatrocksolutions.frscodesample.model.UserProfile;
 import za.co.flatrocksolutions.frscodesample.profile_list.contract.ProfileListContract;
-import za.co.flatrocksolutions.frscodesample.profile_list.presenter.ProfileListPresenter;
 import za.co.flatrocksolutions.frscodesample.profile_list.view.ProfileListActivity;
 import za.co.flatrocksolutions.frscodesample.profile_list.view.ProfileListFragment;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static org.hamcrest.core.IsNot.not;
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.*;
 import static android.support.test.InstrumentationRegistry.getTargetContext;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
-import static org.hamcrest.Matchers.*;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.Visibility;
+import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
 
 
 /**
@@ -280,27 +272,6 @@ public class ProfileListFragmentTest {
 
         verify(mPresenter).profileClicked(any());
     }
-
-//    @Test
-//    public void testOnErrorAction() {
-//        doNothing().when(mPresenter).setView(any());
-//        doNothing().when(mPresenter).retryClicked();
-//
-//        doAnswer(invocation -> {
-//            ProfileListContract.View view = mFragment;
-//            view.onError();
-//            return null;
-//        }).when(mPresenter).onSubscribe();
-//
-//        setupFragment();
-//
-//        onView(withId(android.support.design.R.id.snackbar_action))
-//                .perform(click());
-//
-//        verify(mPresenter).retryClicked();
-//    }
-
-
 
     private String getProfileIconUri() throws Exception {
         File file = new File(getInstrumentation().getTargetContext().getCacheDir(), "ic_account_black_48dp2.png");
